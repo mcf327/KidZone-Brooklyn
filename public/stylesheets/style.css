@@ -1,8 +1,40 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+nav {
+  background-color: #007bff;
+  padding: 10px;
+  padding-right: 25px;
+  color: #fff;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 25px;
+}
+
+nav > a {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login img {
+  height: 20px;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
