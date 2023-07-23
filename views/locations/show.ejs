@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+
+<h2>Details for <%= location.name %></h2>
+<p><%= location.address %></p>
+<p><%= location.description %></p>
+<div>
+    <h4>Hours of Operation</h4>
+    <table>
+        <% location.hoursOfOperation.forEach(function(day) { %>
+            <tr>
+                <td><%= day.day %></td>
+                <td><%= day.startHour %><%= day.startAmPm %> to </td>
+                <td><%= day.endHour %><%= day.endAmPm %></td>
+            </tr>
+        <% }); %>
+    </table>
+</div>
+<div>
+    <h3>Child-Equipped Facilities:</h3>
+    <% if (location.childEquipped) { %>
+        <p>Yes</p>
+    <% } else { %>
+        <p>No</p>
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %>

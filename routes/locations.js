@@ -9,6 +9,9 @@ router.get('/all', locationsCtrl.allLocations);
 // GET /locations/new
 router.get('/new', ensureLoggedIn, locationsCtrl.new);
 
+// GET /locations/:id
+router.get('/:id', locationsCtrl.show);
+
 // POST /locations
 router.post('/all', ensureLoggedIn, locationsCtrl.create);
 
