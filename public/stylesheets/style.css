@@ -43,3 +43,41 @@ h2 {
   display: flex;
   justify-content: center;
 }
+
+
+#list-all {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#list-all th, #list-all td {
+  text-align: left;
+  padding: 10px;
+}
+
+.new-location-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-input-container {
+  display: grid;
+  grid-template-columns: 80px 200px;
+  grid-gap: 10px;
+}
+
+.new-location-form input[name="description"] {
+  height: 75px;
+}
+
+.child-equipped {
+  display: flex;
+}
+
+.child-equipped input {
+  margin-left: 10px;
+}
+
