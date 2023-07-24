@@ -39,7 +39,7 @@ h2 {
   justify-content: center;
 }
 
-p {
+p, h5 {
   text-align: center;
 }
 
@@ -85,3 +85,58 @@ p {
   margin-left: 10px;
 }
 
+.details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-facilities {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-facilities > h4 {
+  padding: 10px;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+table thead th {
+  padding: 5px;
+  border-bottom: 2px solid #424748;
+  vertical-align: middle;
+}
+
+.reviews-table {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviews-table > th {
+  vertical-align: middle;
+  text-align: left;
+}
+
+.user-review {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-review > img {
+  border-radius: 50px;
+  height: 30px;
+}
+
+th {
+  background-color:#00B7FF;
+}

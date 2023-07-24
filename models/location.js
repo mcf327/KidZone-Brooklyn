@@ -26,6 +26,27 @@ const hoursOfOperationSchema = new Schema({
     }
 });
 
+const reviewSchema = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    username: String,
+    userAvatar: String,
+    comment: {
+        type: String,
+        required: true
+    },
+    rating: {
+        type: Number,
+        min: 1,
+        max: 5,
+        default: 3
+    }
+},{
+    timestamps: true
+});
 
 
 const locationSchema = new Schema({
@@ -47,7 +68,10 @@ const locationSchema = new Schema({
     childEquipped: {
         type: Boolean,
         default: false
-    }
+    },
+    reviews: [reviewSchema]
+}, {
+    timestamps: true
 });
 
 
