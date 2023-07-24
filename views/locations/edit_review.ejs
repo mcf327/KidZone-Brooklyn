@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+<h3>Update Review</h3>
+
+<form id="edit-review" method="POST" action="/reviews/<%= location._id %>/reviews/<%= review._id %>?_method=PUT">
+    <label>Comment:</label>
+    <textarea name="comment"></textarea>
+    <label>Rating:</label>
+    <select name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select><br>
+    <input type="submit" value="Update Review">
+</form>
+
+
+<%- include('../partials/footer') %>
