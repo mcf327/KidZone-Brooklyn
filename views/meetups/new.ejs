@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+<h2>Create New Meetup</h2>
+
+<form action="/meetups/all" method="POST">
+    <label for="location">Location:</label>
+    <select name="location" id="location">
+        <% locations.forEach(function(location) { %>
+            <option value="<%= location._id %>"><%= location.name %></option>
+        <% }); %>
+    </select><br>
+    <label for="time">Time:</label>
+    <input type="text" name="time" id="time"><br>
+    <label for="comment">Comment:</label>
+    <textarea name="comment" id="comment"></textarea><br>
+    <input type="submit" value="Create Meetup">
+</form>
+
+<%- include('../partials/footer') %>

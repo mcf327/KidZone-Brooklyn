@@ -1,13 +1,15 @@
 <%- include('../partials/header') %>
 
-<h2>All Locations</h2><br><br>
-<div id="list-all">
+<h2>My Locations</h2>
+
+<% if (locations.length > 0) { %>
     <table>
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Address</th>
                 <th>Type</th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
@@ -18,9 +20,18 @@
                     <td><%= location.address %></td>
                     <td><%= location.type %></td>
                     <td><a href="/locations/<%= location._id %>">Details</a></td>
+                    <td>
+                        <form action="/locations/<%= location._id %>?_method=DELETE" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit">DELETE</button>
+                        </form>
+                    </td>
                 </tr>
             <% }); %>
         </tbody>
     </table>
-</div>
+<% } else { %>
+  <p>No locations added by you yet.</p>
+<% } %>
+
 <%- include('../partials/footer') %>

@@ -6,7 +6,7 @@ async function allLocations(req, res) {
         res.render('locations/all', { title: 'All Locations', locations });
     } catch (err) {
         console.log(err);
-        res.render('err', { message: 'An error occurred getting locations list.' });
+        res.render('error', { message: 'An error occurred getting locations list.' });
     }
 }
 
@@ -22,6 +22,12 @@ async function show(req, res) {
         console.log(error);
         res.redirect('locations/all');
     }
+}
+
+async function myLocations(req, res) {
+    const locations = await Location.find({ user: req.user._id});
+    console.log(locations);
+    res.render('locations/my_locations', { title: 'My Locations', locations });
 }
 
 async function create(req, res) {
@@ -45,7 +51,7 @@ async function create(req, res) {
         description: req.body.description,
         hoursOfOperation: hoursOfOperation,
         childEquipped: req.body.childEquipped,
-        userAdded: req.user._id
+        user: req.user._id
     };
     const location = new Location(locationData);
     try {
@@ -57,9 +63,21 @@ async function create(req, res) {
     }
 }
 
+async function deleteLocation(req, res) {
+    try {
+        await Location.findByIdAndDelete(req.params.id);
+        res.redirect('/locations/all');
+    } catch (err) {
+        console.log(err);
+        res.redirect('/locations/all');
+    }
+}
+
 module.exports = {
     allLocations,
     new: newLocation,
     create,
-    show
+    show,
+    myLocations,
+    delete: deleteLocation
 }

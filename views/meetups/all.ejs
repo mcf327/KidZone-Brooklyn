@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+
+<h2>Meetups</h2>
+
+<% if (meetups.length > 0) { %>
+    <ul>
+      <% meetups.forEach(function(meetup) { %>
+        <li>
+          <strong>Location:</strong> <%= meetup.location.name %><br>
+          <strong>Organizer:</strong> <%= meetup.organizer.name %><br>
+          <strong>Time:</strong> <%= meetup.time %><br>
+          <strong>Attendees:</strong> <%= meetup.attendees.length %><br>
+          <% if (meetup.comment) { %>
+            <strong>Note:</strong> <%= meetup.comment %><br>
+          <% } %>
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>No meetups found.</p>
+  <% } %>
+  <a href="/meetups/new">Start a new Meetup!</a>
+<%- include('../partials/footer') %>
