@@ -12,6 +12,10 @@ const meetupSchema = new Schema({
         ref: 'User',
         required: true
     },
+    date: {
+        type: String,
+        required: true
+    },
     time: {
         type: String,
         required: true

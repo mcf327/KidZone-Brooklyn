@@ -8,11 +8,38 @@
         <li>
           <strong>Location:</strong> <%= meetup.location.name %><br>
           <strong>Organizer:</strong> <%= meetup.organizer.name %><br>
+          <strong>Day:</strong> <%= meetup.date %><br>
           <strong>Time:</strong> <%= meetup.time %><br>
-          <strong>Attendees:</strong> <%= meetup.attendees.length %><br>
           <% if (meetup.comment) { %>
             <strong>Note:</strong> <%= meetup.comment %><br>
           <% } %>
+          <strong>Attendees:</strong>
+          <% if (meetup.attendees.length > 0) { %>
+            <ul>
+                <% meetup.attendees.forEach(function(attendee) { %>
+                    <li><%= attendee.name %></li>
+                <% }); %>
+            </ul>
+          <% } else { %>
+            <p>No attendees yet.</p>
+          <% } %>  
+          <% if (meetup.attendees.some(attendee => attendee._id.equals(user._id))) { %>
+            <form action="/meetups/<%= meetup._id %>/removeMe?_method=PUT" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <button type="submit">Remove Me</button>
+            </form>
+          <% } else { %>
+            <form action="/meetups/<%= meetup._id %>?_method=PUT" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <button type="submit">Sign Up</button>
+            </form>
+          <% } %>
+          <% if (user?._id.equals(meetup.organizer._id)) { %>
+            <form action="/meetups/<%= meetup._id %>?_method=DELETE" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+            </form>
+          <% } %>  
         </li>
       <% }); %>
     </ul>
