@@ -32,7 +32,7 @@ async function myLocations(req, res) {
 
 async function create(req, res) {
     req.body.childEquipped = !!req.body.childEquipped;
-    console.log('Data from form: ', req.body);
+    // console.log('Data from form: ', req.body);
     const hoursOfOperation = [];
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     for (let i=0; i < days.length; i++) {

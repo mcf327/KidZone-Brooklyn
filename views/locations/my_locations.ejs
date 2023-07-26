@@ -3,6 +3,7 @@
 <h2>My Locations</h2>
 
 <% if (locations.length > 0) { %>
+    <div id="my-list">
     <table>
         <thead>
             <tr>
@@ -30,6 +31,7 @@
             <% }); %>
         </tbody>
     </table>
+    </div>
 <% } else { %>
   <p>No locations added by you yet.</p>
 <% } %>
