@@ -1,9 +1,17 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(246, 239, 230);
 }
 
 a {
   color: #00B7FF;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(246, 239, 230);
 }
 
 nav {
@@ -37,6 +45,8 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  margin-top: 40px;
 }
 
 p, h5 {
@@ -57,7 +67,21 @@ p, h5 {
 }
 
 #list-all th, #list-all td {
-  text-align: left;
+  text-align: center;
+  padding: 10px;
+}
+
+.all-locations-table, .my-locations-table {
+  margin: 20px;
+  border-radius: 5px;
+  background-color: lightblue;
+  display: table;
+  table-layout: fixed;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.my-locations-table th, .my-locations-table td {
+  text-align: center;
   padding: 10px;
 }
 
@@ -65,6 +89,18 @@ p, h5 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: lightblue;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.show-container {
+  background-color: lightblue;
+  padding: 0px 25px 25px 25px;
+  margin-top: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .new-input-container {
@@ -111,7 +147,7 @@ p, h5 {
 
 table thead th {
   padding: 5px;
-  border-bottom: 2px solid #424748;
+  border-radius: 3px;
 }
 
 .reviews-table {
@@ -154,6 +190,33 @@ table thead th {
 #user-avatar {
   border-radius: 50px;
   height: 30px;
+}
+
+.meetups-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 95%;
+}
+
+.meetup-card {
+  margin: 20px;
+  width: 100%;
+  max-width: 768px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: lightblue;
+  table-layout: fixed;
+  display: table;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.meetup-card td {
+  word-break: break-word;
+  display: table-cell;
+  padding: 5px;
 }
 
 th {

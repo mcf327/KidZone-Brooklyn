@@ -1,87 +1,88 @@
 <%- include('../partials/header') %>
-
-<h2>Details for <%= location.name %></h2>
-<p><%= location.address %></p>
-<p><%= location.description %></p>
-<div class="details-container">
-    <h4>Hours of Operation:</h4>
-    <table>
-        <% location.hoursOfOperation.forEach(function(day) { %>
-            <tr>
-                <td><%= day.day %></td>
-                <td><%= day.startHour %><%= day.startAmPm %> to </td>
-                <td><%= day.endHour %><%= day.endAmPm %></td>
-            </tr>
-        <% }); %>
-    </table>
-</div>
-<div class="details-facilities">
-    <h4>Child-Equipped Facilities:</h4>
-    <% if (location.childEquipped) { %>
-        <p>Yes</p>
-    <% } else { %>
-        <p>No</p>
-    <% } %>
-</div>
-
-<% if (location.reviews.length) { %>
-    <table class = reviews-table>
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Date</th>
-                <th>Comment</th>
-                <th>Rating</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% let total = 0 %>
-            <% location.reviews.forEach(function(review) { %>
-                <% total += review.rating %>
-                <tr  class="user-review">
-                    <td><img alt="avatar" src="<%= review.userAvatar %>" id="user-avatar"></td>
-                    <td><%= review.createdAt.toLocaleDateString() %></td>
-                    <td><%= review.comment %></td>
-                    <td><%= review.rating %></td>
-                    <td>
-                        <% if (user?._id.equals(review.user)) { %>
-                            <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit">DELETE</button>
-                            </form>
-                            <a href="/reviews/<%= location._id %>/reviews/<%= review._id %>/edit">Update Review</a>
-                        <% } %>
-                    </td>
+<div class="show-container">
+    <h2><%= location.name %></h2>
+    <p><%= location.address %></p>
+    <p><%= location.description %></p>
+    <div class="details-container">
+        <h4>Hours of Operation:</h4>
+        <table>
+            <% location.hoursOfOperation.forEach(function(day) { %>
+                <tr>
+                    <td><%= day.day %></td>
+                    <td><%= day.startHour %><%= day.startAmPm %> to </td>
+                    <td><%= day.endHour %><%= day.endAmPm %></td>
                 </tr>
             <% }); %>
-            <tr>
-                <td colspan="3"></td>
-                <td><strong><%= (total / location.reviews.length).toFixed(1) %></strong></td>
-            </tr>
-        </tbody>
-    </table>
- <% } else { %>
-     <h5>No Reviews</h5>
- <% } %>
+        </table>
+    </div>
+    <div class="details-facilities">
+        <h4>Child-Equipped Facilities:</h4>
+        <% if (location.childEquipped) { %>
+            <p>Yes</p>
+        <% } else { %>
+            <p>No</p>
+        <% } %>
+    </div>
 
-<div class="review-form">
-    <h3>Rate this location!</h3>
-    <% if (user) { %>
-        <form id="new-review" method="POST" action="/reviews/<%= location._id %>/reviews">
-            <label>Comment:</label>
-            <textarea name="comment"></textarea>
-            <label>Rating:</label>
-            <select name="rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select><br>
-            <input type="submit" value="Add Review">
-        </form>
+    <% if (location.reviews.length) { %>
+        <table class = reviews-table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Date</th>
+                    <th>Comment</th>
+                    <th>Rating</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let total = 0 %>
+                <% location.reviews.forEach(function(review) { %>
+                    <% total += review.rating %>
+                    <tr  class="user-review">
+                        <td><img alt="avatar" src="<%= review.userAvatar %>" id="user-avatar"></td>
+                        <td><%= review.createdAt.toLocaleDateString() %></td>
+                        <td><%= review.comment %></td>
+                        <td><%= review.rating %></td>
+                        <td>
+                            <% if (user?._id.equals(review.user)) { %>
+                                <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit">DELETE</button>
+                                </form>
+                                <a href="/reviews/<%= location._id %>/reviews/<%= review._id %>/edit">Update Review</a>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }); %>
+                <tr>
+                    <td colspan="3"></td>
+                    <td><strong><%= (total / location.reviews.length).toFixed(1) %></strong></td>
+                </tr>
+            </tbody>
+        </table>
+    <% } else { %>
+        <h5>No Reviews</h5>
     <% } %>
+
+    <div class="review-form">
+        <h3>Rate this location!</h3>
+        <% if (user) { %>
+            <form id="new-review" method="POST" action="/reviews/<%= location._id %>/reviews">
+                <label>Comment:</label>
+                <textarea name="comment"></textarea>
+                <label>Rating:</label>
+                <select name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select><br>
+                <input type="submit" value="Add Review">
+            </form>
+        <% } %>
+    </div>
 </div>
 
 

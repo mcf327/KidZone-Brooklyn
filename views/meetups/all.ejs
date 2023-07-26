@@ -1,65 +1,76 @@
 <%- include('../partials/header') %>
 
 <h2>Meetups</h2>
-
+<div class="meetups-container">
 <% if (meetups.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>Where</th>
-                <th>Organizer</th>
-                <th>Day</th>
-                <th>Time</th>
-                <th>Note</th>
-                <th>Attendees</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-           <% meetups.forEach(function(meetup) { %>
-              <tr>
-                <td><%= meetup.location.name %></td>
-                <td><%= meetup.organizer.name %></td>
-                <td><%= meetup.date %></td>
-                <td><%= meetup.time %></td>
-                <td><% if (meetup.comment) { %><%= meetup.comment %><% } else { %>N/A<% } %></td> 
-                <td>
-                    <% if (meetup.attendees.length > 0) { %>
-                        <ul>
-                            <% meetup.attendees.forEach(function(attendee) { %>
-                             <li><%= attendee.name %></li>
-                            <% }); %>
-                       </ul>
-                    <% } else { %>
-                       <p>No attendees yet.</p>
-                    <% } %>
-                </td>
-                <td>
-                    <% if (meetup.attendees.some(attendee => attendee._id.equals(user._id))) { %>
-                        <form action="/meetups/<%= meetup._id %>/removeMe?_method=PUT" method="POST">
-                            <input type="hidden" name="_method" value="PUT">
-                            <button type="submit">Remove Me</button>
-                        </form>
-                    <% } else { %>
-                        <form action="/meetups/<%= meetup._id %>?_method=PUT" method="POST">
-                            <input type="hidden" name="_method" value="PUT">
-                            <button type="submit">Sign Up</button>
-                        </form>
-                    <% } %>
-                    <% if (user?._id.equals(meetup.organizer._id)) { %>
-                        <form action="/meetups/<%= meetup._id %>?_method=DELETE" method="POST">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit">Delete</button>
-                        </form>
-                    <% } %>
-                </td>
-              </tr>
-            <% }); %>
-        </tbody>
-    </table>
+    <% meetups.forEach(function(meetup) { %>
+        <table class="meetup-card">
+            <thead>
+                <tr>
+                    <th>Where</th>
+                    <th>Organizer</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= meetup.location.name %></td>
+                    <td><%= meetup.organizer.name %></td>
+                    <td><%= meetup.date %></td>
+                    <td><%= meetup.time %></td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <th>Note</th>
+                    <th>Attendees</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><% if (meetup.comment) { %><%= meetup.comment %><% } else { %>N/A<% } %></td> 
+                    <td>
+                        <% if (meetup.attendees.length > 0) { %>
+                            <ul>
+                                <% meetup.attendees.forEach(function(attendee) { %>
+                                    <li><%= attendee.name %></li>
+                                <% }); %>
+                            </ul>
+                        <% } else { %>
+                            <p>No attendees yet.</p>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (meetup.attendees.some(attendee => attendee._id.equals(user._id))) { %>
+                            <form action="/meetups/<%= meetup._id %>/removeMe?_method=PUT" method="POST">
+                                <input type="hidden" name="_method" value="PUT">
+                                <button type="submit">Remove Me</button>
+                            </form>
+                        <% } else { %>
+                            <form action="/meetups/<%= meetup._id %>?_method=PUT" method="POST">
+                                <input type="hidden" name="_method" value="PUT">
+                                <button type="submit">Sign Up</button>
+                            </form>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (user?._id.equals(meetup.organizer._id)) { %>
+                            <form action="/meetups/<%= meetup._id %>?_method=DELETE" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit">Delete</button>
+                            </form>
+                        <% } %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    <% }); %>
 <% } else { %>
     <p>No meetups found.</p>
 <% } %>
 <a href="/meetups/new">Start a new Meetup!</a>
-
+</div>
 <%- include('../partials/footer') %>
