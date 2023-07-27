@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<h2>All Locations</h2><br><br>
+<h2>All Locations</h2>
 <div id="list-all">
     <table class="all-locations-table">
         <thead>
@@ -17,7 +17,7 @@
                     <td><%= location.name %></td>
                     <td><%= location.address %></td>
                     <td><%= location.type %></td>
-                    <td><a href="/locations/<%= location._id %>">Details</a></td>
+                    <td><a href="/locations/<%= location._id %>" class="details-link">Info</a></td>
                 </tr>
             <% }); %>
         </tbody>

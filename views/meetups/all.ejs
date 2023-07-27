@@ -40,19 +40,19 @@
                                 <% }); %>
                             </ul>
                         <% } else { %>
-                            <p>No attendees yet.</p>
+                            <p>N/A</p>
                         <% } %>
                     </td>
                     <td>
                         <% if (meetup.attendees.some(attendee => attendee._id.equals(user._id))) { %>
                             <form action="/meetups/<%= meetup._id %>/removeMe?_method=PUT" method="POST">
                                 <input type="hidden" name="_method" value="PUT">
-                                <button type="submit">Remove Me</button>
+                                <button type="submit" class="signup-btn">Remove Me</button>
                             </form>
                         <% } else { %>
                             <form action="/meetups/<%= meetup._id %>?_method=PUT" method="POST">
                                 <input type="hidden" name="_method" value="PUT">
-                                <button type="submit">Sign Up</button>
+                                <button type="submit" class="signup-btn">Sign Up</button>
                             </form>
                         <% } %>
                     </td>
@@ -60,7 +60,7 @@
                         <% if (user?._id.equals(meetup.organizer._id)) { %>
                             <form action="/meetups/<%= meetup._id %>?_method=DELETE" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit">Delete</button>
+                                <button type="submit" class="delete-button">X</button>
                             </form>
                         <% } %>
                     </td>
@@ -71,6 +71,6 @@
 <% } else { %>
     <p>No meetups found.</p>
 <% } %>
-<a href="/meetups/new">Start a new Meetup!</a>
+<a href="/meetups/new" class="add-loc-btn">Start a new Meetup!</a>
 </div>
 <%- include('../partials/footer') %>

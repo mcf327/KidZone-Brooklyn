@@ -3,16 +3,20 @@
 <h3>Update Review</h3>
 
 <form id="edit-review" method="POST" action="/reviews/<%= location._id %>/reviews/<%= review._id %>?_method=PUT">
-    <label>Comment:</label>
-    <textarea name="comment"></textarea>
-    <label>Rating:</label>
-    <select name="rating">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select><br>
+    <div class="form-group">
+     <label>Comment:</label>
+     <textarea name="comment"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Rating:</label>
+         <select name="rating">
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+             <option value="5">5</option>
+         </select><br>
+    </div>
     <input type="submit" value="Update Review">
 </form>
 
