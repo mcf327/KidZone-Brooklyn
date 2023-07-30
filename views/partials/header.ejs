@@ -6,9 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <title><%= title %></title>
+  <link rel="icon" type='image/x-icon' href='/images/favicon.ico'/>
 </head>
 <body>
     <nav>
+        <a href="/" id="home-link"><img src="/images/logo.png"></a>
         <a href="/locations/all">All Locations</a>&nbsp; | &nbsp;
         <% if (user) { %>
             <a href="/locations">My Locations</a>&nbsp; | &nbsp;

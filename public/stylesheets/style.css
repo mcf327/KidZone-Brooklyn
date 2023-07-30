@@ -1,18 +1,25 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: rgb(254, 251, 230);
+  background-color: rgb(252, 250, 239);
   margin: 0;
+  height: 95vh;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color:  rgb(254, 251, 230);
+  background-color:  rgb(252, 250, 239);
+  background-image: url(/images/background.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 95%;
 }
 
 nav {
@@ -35,7 +42,12 @@ nav a {
   border-radius: 5px;
 }
 
-nav a:hover {
+#home-link {
+  margin-left: 10px;
+  margin-right: auto;
+}
+
+nav a:hover:not(#home-link) {
   background-color: lightblue;
 }
 
@@ -95,7 +107,7 @@ p, h5 {
   padding: 15px;
 }
 
-.new-location-form, .new-meetup-form, #edit-review {
+.new-location-form, .new-meetup-form, #edit-review, .welcome-text-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,6 +115,10 @@ p, h5 {
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-text-container {
+  width: 40%;
 }
 
 .new-location-form {
@@ -130,7 +146,7 @@ p, h5 {
 
 .show-container {
   background-color: lightblue;
-  width: 77%;
+  width: 60%;
   padding-bottom: 30px;
   margin-top: 30px;
   border-radius: 5px;
@@ -185,14 +201,14 @@ p, h5 {
 }
 
 table thead th {
-  padding: 5px;
-  border-radius: 3px;
+  border-radius: 4px 4px 0px 0px;
 }
 
 .reviews-table > th {
   vertical-align: middle;
   text-align: left;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
 }
 
 .new-meetup-form {
@@ -262,7 +278,7 @@ table thead th {
   margin-top: 10px;
 }
 
-#add-review-btn, .add-loc-btn, .signup-btn {
+#add-review-btn, .add-loc-btn, .signup-btn, .create-meetup-button, .update-button {
   padding: 10px 20px;
   background-color: #00B7FF;
   color: #fff;
@@ -273,7 +289,7 @@ table thead th {
   text-decoration: none;
 }
 
-#add-review-btn:hover, .add-loc-btn:hover, .signup-btn:hover {
+#add-review-btn:hover, .add-loc-btn:hover, .signup-btn:hover, .create-meetup-button:hover, .update-button:hover {
   background-color: #0056b3;
 }
 
@@ -319,18 +335,32 @@ th {
   color: black;
 }
 
-footer {
-  background-color: #f1f1f1;
-  padding: 50px;
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
 input, textarea {
   border-radius: 3px;
   padding: 3px;
   border: 2px #00B7FF;
   font-size: 16px;
+}
+
+#img-credit-link {
+  text-align: right;
+}
+
+#edit-review-button {
+  background-color: #f9c320f9;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+#edit-review-button:hover {
+  background-color: #b37700;
+}
+
+#buttons-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }

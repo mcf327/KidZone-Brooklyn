@@ -41,17 +41,17 @@
                 <% location.reviews.forEach(function(review) { %>
                     <% total += review.rating %>
                     <tr  class="user-review">
-                        <td><img alt="avatar" src="<%= review.userAvatar %>" id="user-avatar"></td>
+                        <td><img src="<%= review.userAvatar %>" id="user-avatar"></td>
                         <td><%= review.createdAt.toLocaleDateString() %></td>
                         <td><%= review.comment %></td>
                         <td><%= review.rating %></td>
-                        <td>
+                        <td id="buttons-cell">
                             <% if (user?._id.equals(review.user)) { %>
                                 <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="delete-button">X</button>
                                 </form>
-                                <a href="/reviews/<%= location._id %>/reviews/<%= review._id %>/edit">Update Review</a>
+                                <a href="/reviews/<%= location._id %>/reviews/<%= review._id %>/edit" id="edit-review-button">✏️</a>
                             <% } %>
                         </td>
                     </tr>
