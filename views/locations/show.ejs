@@ -4,6 +4,7 @@
     <p><%= location.address %></p>
     <p><%= location.description %></p>
     <div class="details-container">
+       
         <h4>Hours of Operation:</h4>
         <table>
             <% location.hoursOfOperation.forEach(function(day) { %>
@@ -14,6 +15,7 @@
                 </tr>
             <% }); %>
         </table>
+        
     </div>
     <div class="details-facilities">
         <h4>Child-Equipped Facilities:</h4>

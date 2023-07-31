@@ -3,6 +3,7 @@
 <h2>Meetups</h2>
 <div class="meetups-container">
 <% if (meetups.length > 0) { %>
+    <% meetups.sort((a, b) => b.createdAt - a.createdAt); %>
     <% meetups.forEach(function(meetup) { %>
         <table class="meetup-card">
             <thead>
