@@ -375,3 +375,11 @@ input, textarea {
 #review-buttons {
   margin-top: 15px;
 }
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+}
