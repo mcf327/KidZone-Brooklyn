@@ -1,0 +1,49 @@
+<%- include('../partials/header') %>
+  <h2>Edit Location</h2>
+  <form action="/locations/<%= location._id %>?_method=PUT" method="POST" class="new-location-form">
+    <div class="new-input-container">
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%= location.name %>">
+        <label for="address">Address:</label>
+        <input type="text" name="address" value="<%= location.address %>">
+        <label for="type">Type:</label>
+        <input type="text" name="type" value="<%= location.type %>">
+        <label for="description">Description:</label>
+        <textarea name="description" value="<%= location.description %>"></textarea>
+    </div>
+
+    <h4>Hours of Operation</h4>
+
+    <table>
+        <% const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; %>
+        <% for (let i=0; i<days.length; i++) { %>
+            <tr>
+                <td><label><%= days[i] %></label></td>
+                <td><label>from</label></td>
+                <td><input type="number" name="hoursOfOperation[<%= i %>][startHour]" min="1" max="12"></td>
+                <td>
+                    <select name="hoursOfOperation[<%= i %>][startAmPm]">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                </td>
+                <td><label>to</label></td>
+                <td><input type="number" name="hoursOfOperation[<%= i %>][endHour]" min="1" max="12"></td>
+                <td>
+                    <select name="hoursOfOperation[<%= i %>][endAmPm]">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+
+    <div class="child-equipped">
+        <h4>Child-Equipped Facilities?</h4>
+        <input type="checkbox" name="childEquipped">
+    </div>
+
+    <button type="submit" name ="submit" class="add-loc-btn">Update Location</button>
+</form>
+<%- include('../partials/footer') %>

@@ -45,13 +45,13 @@
                         <td><%= review.createdAt.toLocaleDateString() %></td>
                         <td><%= review.comment %></td>
                         <td><%= review.rating %></td>
-                        <td id="buttons-cell">
+                        <td class="buttons-cell" id="review-buttons">
                             <% if (user?._id.equals(review.user)) { %>
                                 <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="delete-button">X</button>
                                 </form>
-                                <a href="/reviews/<%= location._id %>/reviews/<%= review._id %>/edit" id="edit-review-button">✏️</a>
+                                <a href="/reviews/<%= location._id %>/reviews/<%= review._id %>/edit" class="edit-button">✏️</a>
                             <% } %>
                         </td>
                     </tr>

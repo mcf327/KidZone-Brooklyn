@@ -73,11 +73,34 @@ async function deleteLocation(req, res) {
     }
 }
 
+async function edit(req, res) {
+    try {
+      const location = await Location.findById(req.params.id);
+      res.render('locations/edit_location', { title: 'Edit Location', location });
+    } catch (err) {
+      console.log(err);
+      res.redirect('/locations/all');
+    }
+}
+
+async function update(req, res) {
+    try {
+      const updatedLocation = req.body;
+      await Location.findByIdAndUpdate(req.params.id, updatedLocation);
+      res.redirect('/locations'); // Redirect back to the My Locations page
+    } catch (err) {
+      console.log(err);
+      res.redirect(`/locations/${req.params.id}/edit`);
+    }
+}
+
 module.exports = {
     allLocations,
     new: newLocation,
     create,
     show,
     myLocations,
-    delete: deleteLocation
+    delete: deleteLocation,
+    edit,
+    update
 }

@@ -346,7 +346,7 @@ input, textarea {
   text-align: right;
 }
 
-#edit-review-button {
+.edit-button {
   background-color: #f9c320f9;
   color: #fff;
   border-radius: 5px;
@@ -354,13 +354,24 @@ input, textarea {
   margin-left: 5px;
 }
 
-#edit-review-button:hover {
+.edit-button:hover {
   background-color: #b37700;
 }
 
-#buttons-cell {
+.buttons-cell-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+}
+
+.buttons-cell {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 10px 30px;
+  grid-gap: 15px;
+}
+
+#review-buttons {
+  margin-top: 15px;
 }
